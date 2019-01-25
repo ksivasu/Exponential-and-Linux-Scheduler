@@ -1,0 +1,54 @@
+1.
+
+Exponential Scheduler 
+
+Advantages
+
+i) Implementation is fairly simpler and as it is based on randomization, the processes are not scheduled in the same order every time.
+
+ii) The ratio of how the processes can be manipulated by changing the values of lambda. The processes close to value of lambda are scheduled in higher ratio. 
+
+iii) The scheduler when employed solves the problem of starvation where lower priority processes have to wait till the higher priority ones are processed.    
+
+Disadvantages
+
+i) It does not ensure fairness in scheduling. As it's a random scheduler, some processes might have to wait for a longer time to get scheduled. 
+
+ii) Lambda value has to be chosen properly as extreme values might result in unfair scheduling.
+
+Linux Scheduler
+
+Advantages 
+
+i) Ensures fairness among processes. This is done by allocating dynamic priority (goodness) based on the process priority and as well as the time it has run before.
+
+ii) No randomization and gurantees that all processes are run.
+
+Disadvantges
+
+i) It's an intensive algorithm where the overhead of calculation for scheduling is high. Therefore the scheduling time is more.
+
+3. Round Robin Scheduler of Xinu
+
+Advantages 
+
+i) The scheduler is fast as there is less overhead for scheduling.
+ii) When there are multiple processes with equal priority they are scheduled one after the other in equal time.
+
+Disadvantages
+
+i) It results in starvation of lower priority processes.
+
+Describe the way each of the schedulers affects the NULL process.
+
+Exponential Scheduler
+
+NULL processes are scheduled only if there are no other processes in ready state to be scheduled.
+
+Linux Scheduler
+
+The NULL process are handled in a way that they are scheduled only if there are no processes in ready state to be scheduled.
+
+Xinu Round Robin Scheduler
+
+We can see that the Xinu Default Scheduler always picks the last process, to schedule. Therefore if there are no processes is ready state, then the NULL process will be scheduled.
