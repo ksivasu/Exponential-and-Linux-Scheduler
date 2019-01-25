@@ -1,0 +1,46 @@
+1.
+
+ 1.Another method that we can consider is priority ceiling method. Here, the processes sharing a lock have a ceiling maximum priority of their own. So, a process holding a lock and blocking other processes would assign this ceiling priority to themselves. This works, given the waiting processes do not have a priority greater than ceiling priority.
+
+2.
+
+Output for the given test case :
+
+ Semaphore Implementation
+ Starting A
+ A: acquired lock, sleep 2s
+
+ Starting B
+ Starting C
+ A: to release lock
+
+ B: acquired lock, sleep 2s
+
+ B: to release lock
+
+ C: acquired lock, sleep 2s
+
+ C: to release lock
+
+ Lock Implementation
+ Starting A
+ A: acquired lock, sleep 2s
+
+ Starting B
+ B: acquired lock, sleep 2s
+
+ Starting C
+  B: to release lock
+
+Entered end of release all
+  A: to release lock
+
+ C: acquired lock, sleep 2s
+
+  C: to release lock
+
+Here we can see that in Semaphore implementation, the operation is sequential. That is C starts only after A and B have released the locks. But in the Lock Implementation, as soon as C starts (highest priority), B (lower priority) gets a higher priority assigned, finishing fast, letting C to continue to acquire the lock.
+
+2.
+Here multiple readers can obtain the lock as given in the question. So, they would be able to simultaneously access the do_update() function. 
+Let us take the case where one process gets the lock. Now, the process decides to write on to the buffer. Then as the lock is not exclusive another process, can also acquire the lock and modify the buffer, causing overwrites. Therefore, this will be the issue in this scenario. 
